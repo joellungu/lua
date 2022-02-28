@@ -1,27 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'lecture.dart';
+import 'chat.dart';
 
-class Cours extends StatefulWidget {
+class Partage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _Cours();
+    return _Partage();
   }
 }
 
-class _Cours extends State<Cours> {
+class _Partage extends State<Partage> {
   @override
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(10),
-      children: List.generate(20, (index) {
+      children: List.generate(5, (index) {
         return ListTile(
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
-                  return Lecture(index % 2 == 1, "Algebre Lineaire");
+                  return Chat(
+                      titre: index % 2 == 1 ? "G1 force" : "Albert Mboyo");
                 },
               ),
             );
@@ -30,36 +31,37 @@ class _Cours extends State<Cours> {
             height: 40,
             width: 40,
             alignment: Alignment.center,
-            child: Image.asset("assets/book-icon.png"),
+            child: index % 2 == 1
+                ? Icon(
+                    Icons.people,
+                    size: 40,
+                    color: Colors.grey,
+                  )
+                : Icon(
+                    Icons.person,
+                    size: 40,
+                    color: Colors.grey,
+                  ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
             ),
           ),
           title: Text(
-            "Algebre Lineaire",
+            index % 2 == 1 ? "G1 force" : "Albert Mboyo",
             style: Theme.of(context).textTheme.bodyText1,
           ),
           subtitle: Text(
-            "21 chapitres",
+            index % 2 == 1 ? "21 personnes" : "+2435525663",
             style: Theme.of(context).textTheme.subtitle1,
           ),
-          trailing: index % 2 == 1
-              ? Text(
-                  "En cours...",
-                  style: TextStyle(
-                    color: Colors.blue.shade900,
-                  ),
-                )
-              : Text(
-                  "Terminé",
-                  style: TextStyle(
-                    color: Colors.green.shade700,
-                  ),
-                ),
+          trailing: Text(
+            "12/22/2022",
+            style: TextStyle(
+              fontSize: 11,
+            ),
+          ),
         );
       }),
     );
   }
 }
-
-//Infos personnel, notes()cotes, frais, promotion 

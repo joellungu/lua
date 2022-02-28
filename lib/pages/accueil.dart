@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:lua/utile/widget.dart';
 
 import 'cours/cours.dart';
+import 'partage/partage.dart';
+import 'profile/profil.dart';
 
 class Accueil extends StatefulWidget {
   @override
@@ -32,7 +34,23 @@ class _Accueil extends State<Accueil> with TickerProviderStateMixin {
           title: Widgets.textAppBar("LUA"),
           centerTitle: false,
           actions: [
+            //
             PopupMenuButton(
+              onSelected: (t) {
+                print("______________________________________________ $t");
+                if (t == 0) {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Profile();
+                      },
+                    ),
+                  );
+                } else if (t == 1) {
+                } else if (t == 2) {
+                } else if (t == 2) {
+                } else {}
+              },
               icon: Icon(Icons.more_vert),
               itemBuilder: (context) => [
                 PopupMenuItem(
@@ -42,11 +60,11 @@ class _Accueil extends State<Accueil> with TickerProviderStateMixin {
                     children: [
                       Text(
                         "Profile",
-                        style: Theme.of(context).textTheme.bodyText1,
+                        //style: Theme.of(context).textTheme.bodyText1,
                       )
                     ],
                   ),
-                  value: 2,
+                  value: 0,
                 ),
                 PopupMenuItem(
                   onTap: () {},
@@ -55,11 +73,11 @@ class _Accueil extends State<Accueil> with TickerProviderStateMixin {
                     children: [
                       Text(
                         "Programme des cours",
-                        style: Theme.of(context).textTheme.bodyText1,
+                        //style: Theme.of(context).textTheme.bodyText1,
                       )
                     ],
                   ),
-                  value: 2,
+                  value: 1,
                 ),
                 PopupMenuItem(
                   onTap: () async {
@@ -70,7 +88,7 @@ class _Accueil extends State<Accueil> with TickerProviderStateMixin {
                     children: [
                       Text(
                         "Regle. Interieur",
-                        style: Theme.of(context).textTheme.bodyText1,
+                        //style: Theme.of(context).textTheme.bodyText1,
                       )
                     ],
                   ),
@@ -81,18 +99,30 @@ class _Accueil extends State<Accueil> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Parametre",
-                        style: Theme.of(context).textTheme.bodyText1,
+                        "Bibliothèque",
+                        //style: Theme.of(context).textTheme.bodyText1,
                       )
                     ],
                   ),
-                  value: 1,
+                  value: 3,
+                ),
+                PopupMenuItem(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Parametre",
+                        //style: Theme.of(context).textTheme.bodyText1,
+                      )
+                    ],
+                  ),
+                  value: 4,
                 ),
               ],
             ),
           ],
           bottom: TabBar(
-            isScrollable: true,
+            isScrollable: false,
             controller: controller,
             indicatorColor: Colors.white,
             unselectedLabelStyle: const TextStyle(
@@ -150,7 +180,7 @@ class _Accueil extends State<Accueil> with TickerProviderStateMixin {
           controller: controller,
           children: [
             Cours(),
-            Icon(Icons.directions_bike),
+            Partage(),
             Icon(Icons.directions_bike),
           ],
         ),

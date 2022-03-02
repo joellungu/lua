@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lua/pages/dashboard.dart';
+import 'package:lua/pages/menudroit.dart';
 import 'package:lua/pages/menugauche.dart';
 import 'package:lua/utile/widget.dart';
 
@@ -78,7 +79,7 @@ class _Accueil extends State<Accueil> {
           ],
         ),
         endDrawer: Drawer(
-          child: Container(),
+          child: MenuDroit(),
         ),
         drawer: Drawer(
           child: MenuGauche(),

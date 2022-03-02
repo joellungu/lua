@@ -28,7 +28,9 @@ class ThemeClass {
         backgroundColor: MaterialStateProperty.all(Colors.teal),
       ),
     ),
-    //tabBarTheme: TabBarTheme(),
+    tabBarTheme: TabBarTheme(
+      labelColor: Colors.teal,
+    ),
     textTheme: TextTheme(
       bodyText1: GoogleFonts.lato(
         color: Colors.black,

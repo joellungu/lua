@@ -23,7 +23,7 @@ class _Chat extends State<Chat> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 3), () {
       setState(() {
         start = true;
       });

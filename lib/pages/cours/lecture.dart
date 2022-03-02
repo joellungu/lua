@@ -1,6 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:lua/utile/widget.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class Lecture extends StatefulWidget {
   bool? fini;
@@ -15,130 +16,209 @@ class Lecture extends StatefulWidget {
   }
 }
 
-class _Lecture extends State<Lecture> with TickerProviderStateMixin {
-  late TabController controller;
-  String titreChapitre = "Rappel";
+class _Lecture extends State<Lecture> {
+  //
+  PdfViewerController? controllerPdf;
+
+  GlobalKey cles = GlobalKey<ScaffoldState>();
+  TextEditingController motcles = TextEditingController();
 
   @override
   void initState() {
     //
-    controller = TabController(length: 10, vsync: this);
-    //
-    controller.addListener(() {
-      //
-      print("truc: ${controller.index}");
-      setState(() {
-        if (controller.index == 0) {
-          titreChapitre = "Rappel";
-        } else if (controller.index == 1) {
-          titreChapitre = "Notion de base";
-        } else if (controller.index == 2) {
-          titreChapitre = "Rappel sur les vecteurs";
-        } else {
-          titreChapitre = "Autres chose...";
-        }
-      });
-    });
-    //
     super.initState();
+    //
+    controllerPdf = PdfViewerController();
     //
   }
 
   @override
   Widget build(BuildContext context) {
     return widget.fini!
-        ? DefaultTabController(
-            length: 3,
-            child: Scaffold(
-              appBar: AppBar(
-                title: Widgets.textAppBar("Cp.1 : $titreChapitre"),
-                centerTitle: false,
-                actions: [
-                  PopupMenuButton(
-                    icon: Icon(Icons.more_vert),
-                    itemBuilder: (context) => [
-                      PopupMenuItem(
-                        onTap: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Resumé du cours",
-                              style: Theme.of(context).textTheme.bodyText1,
-                            )
-                          ],
-                        ),
-                        value: 0,
-                      ),
-                      PopupMenuItem(
-                        onTap: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Faire un commentaire",
-                              style: Theme.of(context).textTheme.bodyText1,
-                            )
-                          ],
-                        ),
-                        value: 1,
-                      ),
-                      PopupMenuItem(
-                        onTap: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Exercices",
-                              style: Theme.of(context).textTheme.bodyText1,
-                            )
-                          ],
-                        ),
-                        value: 2,
-                      ),
-                      PopupMenuItem(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Tutulaire du cours",
-                              style: Theme.of(context).textTheme.bodyText1,
-                            )
-                          ],
-                        ),
-                        value: 3,
-                      ),
-                      PopupMenuItem(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Police",
-                              style: Theme.of(context).textTheme.bodyText1,
-                            )
-                          ],
-                        ),
-                        value: 4,
-                      ),
-                    ],
+        ? Scaffold(
+            key: cles,
+            appBar: AppBar(
+              title: Widgets.textAppBar(widget.titre!),
+              centerTitle: false,
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(Icons.arrow_back),
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            //title: Text("Recherche"),
+                            content: Container(
+                              height: 110,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  TextField(
+                                    controller: motcles,
+                                    decoration: InputDecoration(
+                                      label: const Text("Tapez un mot"),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      //PdfTextSearchResult r = await controllerPdf!.searchText(motcles.text);
+                                      //r.
+                                    },
+                                    child: const Text("Recherche"),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        });
+                  },
+                  icon: Icon(
+                    Icons.search,
                   ),
-                ],
-                bottom: TabBar(
-                  isScrollable: true,
-                  controller: controller,
-                  indicatorColor: Colors.white,
-                  unselectedLabelStyle: const TextStyle(
-                    fontWeight: FontWeight.normal,
-                    color: Colors.white10,
-                  ),
-                  tabs: List.generate(10, (index) {
-                    return Tab(
-                      text: "Chap. $index",
-                    );
-                  }),
+                ),
+                PopupMenuButton(
+                  icon: Icon(Icons.more_vert),
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      onTap: () {
+                        Scaffold.of(context).openEndDrawer();
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Plan du cours",
+                            //style: Theme.of(context).textTheme.bodyText1,
+                          )
+                        ],
+                      ),
+                      value: 0,
+                    ),
+                    PopupMenuItem(
+                      onTap: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Resumé du cours",
+                            //style: Theme.of(context).textTheme.bodyText1,
+                          )
+                        ],
+                      ),
+                      value: 1,
+                    ),
+                    PopupMenuItem(
+                      onTap: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Faire un commentaire",
+                            //style: Theme.of(context).textTheme.bodyText1,
+                          )
+                        ],
+                      ),
+                      value: 2,
+                    ),
+                    PopupMenuItem(
+                      onTap: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Exercices",
+                            //style: Theme.of(context).textTheme.bodyText1,
+                          )
+                        ],
+                      ),
+                      value: 3,
+                    ),
+                    PopupMenuItem(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Tutulaire du cours",
+                            //style: Theme.of(context).textTheme.bodyText1,
+                          )
+                        ],
+                      ),
+                      value: 4,
+                    ),
+                    PopupMenuItem(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Police",
+                            //style: Theme.of(context).textTheme.bodyText1,
+                          )
+                        ],
+                      ),
+                      value: 5,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            endDrawer: Drawer(
+              elevation: 0,
+              child: ListView(),
+            ),
+            body: Container(
+              child: SfPdfViewer.asset(
+                'assets/en_GC.pdf',
+                controller: controllerPdf,
+              ),
+            ),
+          )
+        : Scaffold(
+            appBar: AppBar(
+              title: Widgets.textAppBar(widget.titre!),
+            ),
+            body: Center(
+              child: Container(
+                height: 150,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const Text(
+                      """Ce cours est desormé fini vous pouvez commencer votre evaluation des maintenant...""",
+                      textAlign: TextAlign.center,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20, right: 20),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Center(
+                          child: Text(
+                            "Commencer",
+                            //style: Theme.of(context).textTheme.subtitle1,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
-              body: TabBarView(
+            ),
+          );
+  }
+}
+
+
+/*
+TabBarView(
                 controller: controller,
                 children: List.generate(
                   10,
@@ -333,39 +413,5 @@ Officia laboris culpa sit et deserunt cupidatat. Ea tempor occaecat velit culpa 
                     );
                   },
                 ),
-              ),
-            ),
-          )
-        : Scaffold(
-            appBar: AppBar(
-              title: Widgets.textAppBar(widget.titre!),
-            ),
-            body: Center(
-              child: Container(
-                height: 150,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Text(
-                      """Ce cours est desormé fini vous pouvez commencer votre evaluation des maintenant...""",
-                      textAlign: TextAlign.center,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 20, right: 20),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: const Center(
-                          child: Text(
-                            "Commencer",
-                            //style: Theme.of(context).textTheme.subtitle1,
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          );
-  }
-}
+              )
+*/

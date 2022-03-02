@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lua/pages/dashboard.dart';
+import 'package:lua/pages/menugauche.dart';
 import 'package:lua/utile/widget.dart';
 
 import 'cours/cours.dart';
@@ -13,13 +15,13 @@ class Accueil extends StatefulWidget {
   }
 }
 
-class _Accueil extends State<Accueil> with TickerProviderStateMixin {
-  late TabController controller;
+class _Accueil extends State<Accueil> {
+  GlobalKey<ScaffoldState> cles = GlobalKey();
+  //
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   @override
   void initState() {
-    //
-    controller = TabController(length: 3, vsync: this);
     //
     super.initState();
     //
@@ -30,29 +32,75 @@ class _Accueil extends State<Accueil> with TickerProviderStateMixin {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        key: _key,
         appBar: AppBar(
-          title: Widgets.textAppBar("LUA"),
+          elevation: 0,
+          leading: InkWell(
+            onTap: () {
+              //
+              _key.currentState!.openDrawer();
+              //Scaffold.of(cles.currentContext!).openDrawer();
+            },
+            child: Container(
+              height: 40,
+              width: 40,
+              alignment: Alignment.center,
+              child: Icon(
+                Icons.school,
+                color: Colors.white,
+              ),
+              margin: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: Colors.black87,
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
           centerTitle: false,
+          // leading: Container(
+          //   width: 50,
+          //   child: Row(),
+          // ),
           actions: [
             //
-            PopupMenuButton(
-              onSelected: (t) {
-                print("______________________________________________ $t");
-                if (t == 0) {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Profile();
-                      },
-                    ),
-                  );
-                } else if (t == 1) {
-                } else if (t == 2) {
-                } else if (t == 2) {
-                } else {}
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.search),
+            ),
+            //
+            IconButton(
+              onPressed: () {
+                //
+                _key.currentState!.openEndDrawer();
               },
               icon: Icon(Icons.more_vert),
-              itemBuilder: (context) => [
+            ),
+          ],
+        ),
+        endDrawer: Drawer(
+          child: Container(),
+        ),
+        drawer: Drawer(
+          child: MenuGauche(),
+        ),
+        body: ListView(
+          padding: EdgeInsets.only(),
+          shrinkWrap: true,
+          children: [
+            Container(
+              height: 100,
+            ),
+            Dash()
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+/*
+  itemBuilder: (context) => [
                 PopupMenuItem(
                   onTap: () {},
                   child: Row(
@@ -119,72 +167,5 @@ class _Accueil extends State<Accueil> with TickerProviderStateMixin {
                   value: 4,
                 ),
               ],
-            ),
-          ],
-          bottom: TabBar(
-            isScrollable: false,
-            controller: controller,
-            indicatorColor: Colors.white,
-            unselectedLabelStyle: const TextStyle(
-              fontWeight: FontWeight.normal,
-              color: Colors.white10,
-            ),
-            tabs: [
-              Tab(
-                //icon: Icon(Icons.directions_car),
-                //text: "",
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.menu_book_outlined,
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text("Cours")
-                  ],
-                ),
-              ),
-              Tab(
-                //icon: Icon(Icons.directions_transit),
-                //text: "Réception",
-                child: Row(
-                  children: [
-                    Icon(Icons.people_alt_outlined),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text("Partage")
-                  ],
-                ),
-              ),
-              Tab(
-                //icon: Icon(Icons.directions_transit),
-                //text: "Réception",
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.notifications,
-                    ), //how_to_reg_outlined),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text("Valve")
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        body: TabBarView(
-          controller: controller,
-          children: [
-            Cours(),
-            Partage(),
-            Icon(Icons.directions_bike),
-          ],
-        ),
-      ),
-    );
-  }
-}
+            
+*/

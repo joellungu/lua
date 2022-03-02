@@ -23,6 +23,11 @@ class ThemeClass {
 
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Colors.teal),
+      ),
+    ),
     //tabBarTheme: TabBarTheme(),
     textTheme: TextTheme(
       bodyText1: GoogleFonts.lato(
@@ -43,9 +48,8 @@ class ThemeClass {
       // ),
     ),
     colorScheme: ColorScheme.light(),
-
-    appBarTheme: AppBarTheme(
-      backgroundColor: Colors.blue.shade700,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.teal,
     ),
   );
 

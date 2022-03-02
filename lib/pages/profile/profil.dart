@@ -41,8 +41,8 @@ class _Profile extends State<Profile> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Resumé du cours",
-                        style: Theme.of(context).textTheme.bodyText1,
+                        "Infos supplementaire",
+                        //style: Theme.of(context).textTheme.bodyText1,
                       )
                     ],
                   ),
@@ -54,37 +54,12 @@ class _Profile extends State<Profile> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Faire un commentaire",
-                        style: Theme.of(context).textTheme.bodyText1,
+                        "Parametre",
+                        //style: Theme.of(context).textTheme.bodyText1,
                       )
                     ],
                   ),
                   value: 2,
-                ),
-                PopupMenuItem(
-                  onTap: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Exercices",
-                        style: Theme.of(context).textTheme.bodyText1,
-                      )
-                    ],
-                  ),
-                  value: 2,
-                ),
-                PopupMenuItem(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Police",
-                        style: Theme.of(context).textTheme.bodyText1,
-                      )
-                    ],
-                  ),
-                  value: 1,
                 ),
               ],
             ),

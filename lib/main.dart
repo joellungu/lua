@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lua/splash.dart';
 
+import 'page_intro.dart';
 import 'pages/accueil.dart';
 import 'utile/theme.dart';
 
@@ -23,13 +24,15 @@ start() async {
   bool deja = false;
 
   if (deja) {
-    runApp(Lua());
-  } else {
     runApp(
       Lua(
         vue: Accueil(),
       ),
     );
+  } else {
+    runApp(Lua(
+      vue: PageIntro(),
+    ));
   }
 }
 

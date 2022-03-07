@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lua/models/etudiant.dart';
+import 'package:lua/pages/calendrier.dart';
+import 'package:lua/pages/etudiants.dart';
+import 'package:lua/pages/staff.dart';
+
+import 'departement.dart';
+import 'professeurs.dart';
 
 class MenuGauche extends StatefulWidget {
   @override
@@ -36,7 +43,10 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
           bottom: TabBar(
             isScrollable: false,
             controller: controller,
+            indicatorWeight: 1,
+            //indicator: BoxDecoration(),
             indicatorColor: Colors.white,
+            labelColor: Colors.white,
             unselectedLabelStyle: const TextStyle(
               fontWeight: FontWeight.normal,
               color: Colors.white10,
@@ -68,8 +78,76 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                   ),
                 ),
                 ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Professeus(),
+                      ),
+                    );
+                  },
                   leading: Icon(
                     Icons.people_alt,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Professeurs",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Staff(),
+                      ),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.people_outline_sharp,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Statff",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Etudiants(),
+                      ),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.people_alt,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Etudiants",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  //
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Departement(),
+                      ),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.business,
                     color: Colors.white,
                   ),
                   title: Text(
@@ -134,12 +212,20 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                   ),
                 ),
                 ListTile(
+                  onTap: () {
+                    //
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Calendrier(),
+                      ),
+                    );
+                  },
                   leading: Icon(
                     Icons.calendar_today,
                     color: Colors.white,
                   ),
                   title: Text(
-                    "Calendrier",
+                    "Programme de la semaine",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.normal,

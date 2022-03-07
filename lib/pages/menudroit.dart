@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lua/pages/mescontacte.dart';
+import 'package:lua/pages/taches.dart';
+import 'package:lua/widgets/resultats.dart';
 import 'package:lua/widgets/statistiques.dart';
 
 class MenuDroit extends StatefulWidget {
@@ -36,6 +39,7 @@ class _MenuDroit extends State<MenuDroit> with TickerProviderStateMixin {
               height: 50,
               child: TabBar(
                 isScrollable: true,
+                indicatorWeight: 1,
                 controller: controller,
                 indicatorColor: Colors.teal,
                 labelStyle: const TextStyle(
@@ -59,16 +63,9 @@ class _MenuDroit extends State<MenuDroit> with TickerProviderStateMixin {
                 controller: controller,
                 children: [
                   Statistique(),
-                  ListView(
-                    children: [],
-                  ),
-                  ListView(
-                    padding: EdgeInsets.all(10),
-                    children: [],
-                  ),
-                  ListView(
-                    children: [],
-                  )
+                  Resultats(),
+                  MesContactes(),
+                  Taches()
                 ],
               ),
             )

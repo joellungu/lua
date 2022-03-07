@@ -52,7 +52,7 @@ class _Accueil extends State<Accueil> {
               ),
               margin: const EdgeInsets.all(5),
               decoration: BoxDecoration(
-                color: Colors.black87,
+                color: Colors.black45,
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
@@ -78,22 +78,20 @@ class _Accueil extends State<Accueil> {
             ),
           ],
         ),
-        endDrawer: Drawer(
-          child: MenuDroit(),
+        endDrawer: Container(
+          padding: EdgeInsets.only(top: 20),
+          width: MediaQuery.of(context).size.width / 1.1,
+          child: Drawer(
+            child: MenuDroit(),
+          ),
         ),
-        drawer: Drawer(
-          child: MenuGauche(),
+        drawer: Container(
+          width: MediaQuery.of(context).size.width / 1.1,
+          child: Drawer(
+            child: MenuGauche(),
+          ),
         ),
-        body: ListView(
-          padding: EdgeInsets.only(),
-          shrinkWrap: true,
-          children: [
-            Container(
-              height: 100,
-            ),
-            Dash()
-          ],
-        ),
+        body: Dash(),
       ),
     );
   }

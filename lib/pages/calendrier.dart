@@ -36,7 +36,12 @@ class _Calendrier extends State<Calendrier> {
           ],
         ),
       ),
-      body: SfCalendar(),
+      body: SfCalendar(
+        view: CalendarView.week,
+        dataSource: MeetingDataSource(
+          getAppointment(),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           //
@@ -44,5 +49,79 @@ class _Calendrier extends State<Calendrier> {
         child: Icon(Icons.calendar_today),
       ),
     );
+  }
+}
+
+List<Appointment> getAppointment() {
+  List<Appointment> meeting = <Appointment>[];
+  DateTime lelo = DateTime.now();
+  //
+  DateTime debut1 = DateTime(lelo.year, lelo.month, lelo.day, 9, 0, 0);
+  DateTime fin1 = debut1.add(const Duration(hours: 2));
+  //
+  DateTime debut2 = DateTime(lelo.year, lelo.month, lelo.day, 11, 0, 0);
+  DateTime fin2 = debut2.add(const Duration(hours: 2));
+  //
+  DateTime debut3 = DateTime(lelo.year, lelo.month, lelo.day, 13, 0, 0);
+  DateTime fin3 = debut3.add(const Duration(hours: 1));
+  //
+  DateTime debut4 = DateTime(lelo.year, lelo.month, lelo.day, 14, 0, 0);
+  DateTime fin4 = debut4.add(const Duration(hours: 1));
+  //
+  DateTime debut5 = DateTime(lelo.year, lelo.month, lelo.day, 15, 0, 0);
+  DateTime fin5 = debut5.add(const Duration(hours: 2));
+  //
+
+  meeting.add(
+    Appointment(
+      startTime: debut1,
+      endTime: fin1,
+      subject: "Algebre",
+      color: Colors.teal,
+    ),
+  );
+  //
+  meeting.add(
+    Appointment(
+      startTime: debut2,
+      endTime: fin2,
+      subject: "Chimie",
+      color: Colors.brown,
+    ),
+  );
+  //
+  meeting.add(
+    Appointment(
+      startTime: debut3,
+      endTime: fin3,
+      subject: "Physique",
+      color: Colors.green,
+    ),
+  );
+  //
+  meeting.add(
+    Appointment(
+      startTime: debut4,
+      endTime: fin4,
+      subject: "Literature",
+      color: Colors.red.shade700,
+    ),
+  );
+  //
+  meeting.add(
+    Appointment(
+      startTime: debut5,
+      endTime: fin5,
+      subject: "Informatique",
+      color: Colors.green,
+    ),
+  );
+
+  return meeting;
+}
+
+class MeetingDataSource extends CalendarDataSource {
+  MeetingDataSource(List<Appointment> source) {
+    appointments = source;
   }
 }

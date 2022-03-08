@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lua/models/etudiant.dart';
+import 'package:lua/pages/bibliotheque.dart';
 import 'package:lua/pages/calendrier.dart';
+import 'package:lua/pages/cours.dart';
 import 'package:lua/pages/etudiants.dart';
 import 'package:lua/pages/evenement.dart';
 import 'package:lua/pages/staff.dart';
@@ -160,6 +162,14 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                   ),
                 ),
                 ListTile(
+                  //
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Cours(),
+                      ),
+                    );
+                  },
                   leading: Icon(
                     Icons.school,
                     color: Colors.white,
@@ -173,12 +183,20 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                   ),
                 ),
                 ListTile(
+                  //()
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Bibliotheque(),
+                      ),
+                    );
+                  },
                   leading: Icon(
                     Icons.library_books,
                     color: Colors.white,
                   ),
                   title: Text(
-                    "Librerie",
+                    "Bibliotheque",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.normal,

@@ -151,38 +151,28 @@ class _Bibliotheque extends State<Bibliotheque> {
     return Row(
       children: <Widget>[
         Container(
-          child: Row(
-            children: <Widget>[
-              Icon(
-                  user.userInfo[index].status
-                      ? Icons.notifications_off
-                      : Icons.notifications_active,
-                  color:
-                      user.userInfo[index].status ? Colors.red : Colors.green),
-              Text(user.userInfo[index].status ? 'Disabled' : 'Active')
-            ],
-          ),
+          child: Text('Informatique de base'),
           width: 200,
           height: 52,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
           alignment: Alignment.centerLeft,
         ),
         Container(
-          child: Text(user.userInfo[index].phone),
+          child: Text("Mr. Jean-Jack Buntu"),
           width: 300,
           height: 52,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
           alignment: Alignment.centerLeft,
         ),
         Container(
-          child: Text(user.userInfo[index].registerDate),
+          child: Text(user.userInfo[index].name), //
           width: 200,
           height: 52,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
           alignment: Alignment.centerLeft,
         ),
         Container(
-          child: Text(user.userInfo[index].terminationDate),
+          child: Text(user.userInfo[index].registerDate),
           width: 200,
           height: 52,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),

@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:horizontal_data_table/horizontal_data_table.dart';
 
-class Etudiants extends StatefulWidget {
+class Cours extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _Etudiants();
+    return _Cours();
   }
 }
 
-class _Etudiants extends State<Etudiants> {
-  //
+class _Cours extends State<Cours> {
   HDTRefreshController _hdtRefreshController = HDTRefreshController();
 
   static const int sortName = 0;
@@ -45,15 +44,9 @@ class _Etudiants extends State<Etudiants> {
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
-            Text("Etudiants")
+            Text("Cours")
           ],
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-          )
-        ],
       ),
       body: _getBodyWidget(),
     );
@@ -63,7 +56,7 @@ class _Etudiants extends State<Etudiants> {
     return Container(
       child: HorizontalDataTable(
         leftHandSideColumnWidth: 50,
-        rightHandSideColumnWidth: 1400,
+        rightHandSideColumnWidth: 1050,
         isFixedHeader: true,
         headerWidgets: _getTitleWidget(),
         leftSideItemBuilder: _generateFirstColumnRow,
@@ -74,8 +67,8 @@ class _Etudiants extends State<Etudiants> {
           height: 1.0,
           thickness: 0.0,
         ),
-        leftHandSideColBackgroundColor: Color(0xFFFFFFFF),
-        rightHandSideColBackgroundColor: Color(0xFFFFFFFF),
+        //leftHandSideColBackgroundColor: Color(0xFFFFFFFF),
+        //rightHandSideColBackgroundColor: Color(0xFFFFFFFF),
         verticalScrollbarStyle: const ScrollbarStyle(
           thumbColor: Colors.teal,
           isAlwaysShown: false,
@@ -113,12 +106,10 @@ class _Etudiants extends State<Etudiants> {
     return [
       _getTitleItemWidget('#', 50),
       _getTitleItemWidget('NOM', 200),
-      _getTitleItemWidget('TELEPHONE', 200),
-      _getTitleItemWidget('EMAIL', 200),
-      _getTitleItemWidget('COURS', 200),
-      _getTitleItemWidget('TITRE', 200),
-      _getTitleItemWidget('ETABLI DEPUIS', 200),
-      _getTitleItemWidget('HEURE', 200),
+      _getTitleItemWidget('TUTILAIRE', 200),
+      _getTitleItemWidget("NOMBRE D'HEURE", 200),
+      _getTitleItemWidget('DEBUT', 200),
+      _getTitleItemWidget('FIN', 200),
     ];
   }
 
@@ -152,22 +143,6 @@ class _Etudiants extends State<Etudiants> {
   Widget _generateRightHandSideColumnRow(BuildContext context, int index) {
     return Row(
       children: <Widget>[
-        Container(
-          child: Text(
-            index % 2 == 1 ? "Mr Phiné Mokpongbo" : "Mme Fyfy Lungu Kasongo",
-          ),
-          width: 200,
-          height: 52,
-          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-        ),
-        Container(
-          child: Text(user.userInfo[index].phone),
-          width: 200,
-          height: 52,
-          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-        ),
         Container(
           child: Text(user.userInfo[index].registerDate),
           width: 200,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lua/models/etudiant.dart';
 import 'package:lua/pages/calendrier.dart';
 import 'package:lua/pages/etudiants.dart';
+import 'package:lua/pages/evenement.dart';
 import 'package:lua/pages/staff.dart';
 
 import 'departement.dart';
@@ -185,6 +186,13 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                   ),
                 ),
                 ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Evenement(),
+                      ),
+                    );
+                  },
                   leading: Icon(
                     Icons.event_available,
                     color: Colors.white,
@@ -316,37 +324,11 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                 ),
                 ListTile(
                   leading: Icon(
-                    Icons.task_outlined,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "Taches",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ),
-                ListTile(
-                  leading: Icon(
                     Icons.settings,
                     color: Colors.white,
                   ),
                   title: Text(
                     "Parametres",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.add,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "Plus",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.normal,

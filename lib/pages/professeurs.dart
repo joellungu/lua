@@ -146,16 +146,8 @@ class _Professeus extends State<Professeus> {
     return Row(
       children: <Widget>[
         Container(
-          child: Row(
-            children: <Widget>[
-              Icon(
-                  user.userInfo[index].status
-                      ? Icons.notifications_off
-                      : Icons.notifications_active,
-                  color:
-                      user.userInfo[index].status ? Colors.red : Colors.green),
-              Text(user.userInfo[index].status ? 'Disabled' : 'Active')
-            ],
+          child: Text(
+            index % 2 == 1 ? "Mr Phiné Mokpongbo" : "Mme Fyfy Lungu Kasongo",
           ),
           width: 200,
           height: 52,

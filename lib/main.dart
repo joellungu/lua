@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lua/splash.dart';
@@ -45,16 +44,13 @@ class Lua extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //FlutterStatusbarcolor.setStatusBarColor(Colors.white);
-    return CalendarControllerProvider(
-      controller: EventController(),
-      child: MaterialApp(
-        title: 'LUA',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeClass.lightTheme,
-        themeMode: ThemeMode.system,
-        darkTheme: ThemeClass.darkTheme,
-        home: vue,
-      ),
+    return MaterialApp(
+      title: 'LUA',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeClass.lightTheme,
+      themeMode: ThemeMode.system,
+      darkTheme: ThemeClass.darkTheme,
+      home: vue,
     );
   }
 }

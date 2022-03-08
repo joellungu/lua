@@ -1,16 +1,14 @@
-//import 'package:calendar_calendar/calendar_calendar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_contacts/properties/event.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-class Calendrier extends StatefulWidget {
+class Evenement extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _Calendrier();
+    return _Evenement();
   }
 }
 
-class _Calendrier extends State<Calendrier> {
+class _Evenement extends State<Evenement> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,17 +30,11 @@ class _Calendrier extends State<Calendrier> {
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
-            Text("Prog. de la semaine")
+            Text("Evenement")
           ],
         ),
       ),
-      body: SfCalendar(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //
-        },
-        child: Icon(Icons.calendar_today),
-      ),
+      body: SfCalendar(view: CalendarView.month),
     );
   }
 }

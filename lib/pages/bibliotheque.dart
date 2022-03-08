@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:horizontal_data_table/horizontal_data_table.dart';
 
-class Departement extends StatefulWidget {
+class Bibliotheque extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _Departement();
+    return _Bibliotheque();
   }
 }
 
-class _Departement extends State<Departement> {
+class _Bibliotheque extends State<Bibliotheque> {
   //
   HDTRefreshController _hdtRefreshController = HDTRefreshController();
 
@@ -45,9 +45,15 @@ class _Departement extends State<Departement> {
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
-            Text("Département")
+            Text("Bibliotheque")
           ],
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search),
+          )
+        ],
       ),
       body: _getBodyWidget(),
     );
@@ -106,11 +112,11 @@ class _Departement extends State<Departement> {
   List<Widget> _getTitleWidget() {
     return [
       _getTitleItemWidget('#', 50),
-      _getTitleItemWidget('DEPARTEMENT', 200),
-      _getTitleItemWidget('CHEF DU DEPARTEMENT', 300),
-      _getTitleItemWidget('TELEPHONE', 200),
-      _getTitleItemWidget('EMAIL', 200),
-      _getTitleItemWidget('ETABLI DEPUIS', 200),
+      _getTitleItemWidget('NOM (TITRE)', 200),
+      _getTitleItemWidget('MATIERE', 300),
+      _getTitleItemWidget('AUTEUR', 200),
+      _getTitleItemWidget('DATE DE PUBLICATION', 200),
+      _getTitleItemWidget('DISPONIBILITE', 200),
     ];
   }
 
@@ -145,7 +151,17 @@ class _Departement extends State<Departement> {
     return Row(
       children: <Widget>[
         Container(
-          child: Text("Departement de ..."),
+          child: Row(
+            children: <Widget>[
+              Icon(
+                  user.userInfo[index].status
+                      ? Icons.notifications_off
+                      : Icons.notifications_active,
+                  color:
+                      user.userInfo[index].status ? Colors.red : Colors.green),
+              Text(user.userInfo[index].status ? 'Disabled' : 'Active')
+            ],
+          ),
           width: 200,
           height: 52,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),

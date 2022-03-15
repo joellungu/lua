@@ -5,7 +5,14 @@ class Splash extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("LUA"),
+        child: Container(
+          height: 200,
+          width: 200,
+          child: Image.asset(
+            "assets/LOGO PNG.png",
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }

@@ -8,6 +8,7 @@ import 'package:lua/pages/evenement.dart';
 import 'package:lua/pages/staff.dart';
 
 import 'departement.dart';
+import 'planningmois.dart';
 import 'professeurs.dart';
 
 class MenuGauche extends StatefulWidget {
@@ -154,7 +155,7 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                     color: Colors.white,
                   ),
                   title: Text(
-                    "Departements",
+                    "Facultés",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.normal,
@@ -192,7 +193,7 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                     );
                   },
                   leading: Icon(
-                    Icons.library_books,
+                    Icons.library_add,
                     color: Colors.white,
                   ),
                   title: Text(
@@ -251,13 +252,35 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                     color: Colors.white,
                   ),
                   title: Text(
-                    "Programme de la semaine",
+                    "Planning de la semaine",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.normal,
                     ),
                   ),
                 ),
+                ListTile(
+                  onTap: () {
+                    //
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => PlanningMois(),
+                      ),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.calendar_today,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Planning du mois",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                /*
                 ListTile(
                   leading: Icon(
                     Icons.chat_bubble_outline,
@@ -310,6 +333,7 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
+              */
               ],
             ),
             ListView(

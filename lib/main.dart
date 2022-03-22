@@ -45,7 +45,7 @@ class Lua extends StatelessWidget {
   Widget build(BuildContext context) {
     //FlutterStatusbarcolor.setStatusBarColor(Colors.white);
     return MaterialApp(
-      title: 'LUA',
+      title: 'LAU',
       debugShowCheckedModeBanner: false,
       theme: ThemeClass.lightTheme,
       themeMode: ThemeMode.system,
@@ -54,3 +54,4 @@ class Lua extends StatelessWidget {
     );
   }
 }
+//

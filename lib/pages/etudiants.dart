@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:horizontal_data_table/horizontal_data_table.dart';
@@ -111,7 +112,7 @@ class _Etudiants extends State<Etudiants> {
 
   List<Widget> _getTitleWidget() {
     return [
-      _getTitleItemWidget('#', 50),
+      _getTitleItemWidget('', 50),
       _getTitleItemWidget('NOM', 200),
       _getTitleItemWidget('TELEPHONE', 200),
       _getTitleItemWidget('EMAIL', 200),
@@ -137,13 +138,23 @@ class _Etudiants extends State<Etudiants> {
       height: 52,
       //width: 50,
       alignment: Alignment.center,
-      child: Icon(
-        Icons.school,
-        color: Colors.white,
+      child: Container(
+        height: 40,
+        width: 40,
+        alignment: Alignment.center,
+        child: const Icon(
+          CupertinoIcons.person,
+          color: Colors.white,
+        ),
+        margin: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Colors.black45,
+          borderRadius: BorderRadius.circular(20),
+        ),
       ),
       //margin: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-        color: Colors.black45,
+        color: Colors.transparent,
         //borderRadius: BorderRadius.circular(27),
       ),
     );

@@ -17,30 +17,24 @@ class _PreInscription extends State<PreInscription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text(
+          "Pre-inscription",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              //dashboard_outlined
-              CupertinoIcons.person,
-              //CupertinoIcons.house,
-              //color: Colors.green.shade300,
-              size: MediaQuery.of(context).size.width / 10,
-              //color: Colors.green,
-            ),
-            const Text(
-              "Pre-inscription",
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             const SizedBox(
-              height: 30,
+              height: 0,
             ),
             Container(
               height: 120,

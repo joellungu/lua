@@ -22,12 +22,15 @@ class _PageIntro extends State<PageIntro> {
         //allowImplicitScrolling: true,
         indicatorLayout: PageIndicatorLayout.SLIDE,
         loop: false,
+        /*
         pagination: const SwiperPagination(
           alignment: Alignment.bottomCenter,
           builder: DotSwiperPaginationBuilder(
               color: Colors.grey, activeColor: Color(0xff38547C)),
         ),
+        */
         children: <Widget>[
+          /*
           Padding(
             padding: EdgeInsets.all(15),
             child: ListView(
@@ -73,6 +76,7 @@ Enfin, la jeunesse d’aujourd’hui a besoin d’emboîter les pas des autres j
               ],
             ),
           ),
+          */
           Padding(
             padding: const EdgeInsets.all(15),
             child: Column(
@@ -97,7 +101,8 @@ Enfin, la jeunesse d’aujourd’hui a besoin d’emboîter les pas des autres j
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(
+                          //pushReplacement
+                          Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) {
                                 return Login();
@@ -109,7 +114,8 @@ Enfin, la jeunesse d’aujourd’hui a besoin d’emboîter les pas des autres j
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(
+                          //pushReplacement
+                          Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) {
                                 return PreInscription();

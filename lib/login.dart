@@ -15,32 +15,34 @@ class _Login extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text(
+          "Authentification",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              //dashboard_outlined
-              CupertinoIcons.person,
-              //CupertinoIcons.house,
-              //color: Colors.green.shade300,
-              size: MediaQuery.of(context).size.width / 4,
-              //color: Colors.green,
-            ),
-            const Text(
-              "Connexion",
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
+            SizedBox(
+              height: 200,
+              width: 200,
+              child: Image.asset(
+                "assets/LOGO PNG.png",
+                fit: BoxFit.cover,
               ),
             ),
             const SizedBox(
               height: 30,
             ),
-            Container(
+            SizedBox(
               height: 120,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -97,7 +99,7 @@ class _Login extends State<Login> {
             const SizedBox(
               height: 10,
             ),
-            Container(
+            SizedBox(
               height: 120,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,

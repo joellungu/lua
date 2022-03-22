@@ -28,7 +28,7 @@ class ThemeClass {
         backgroundColor: MaterialStateProperty.all(Colors.teal),
       ),
     ),
-    tabBarTheme: TabBarTheme(
+    tabBarTheme: const TabBarTheme(
       labelColor: Colors.teal,
     ),
     textTheme: TextTheme(
@@ -49,7 +49,7 @@ class ThemeClass {
       //   fontWeight: FontWeight.bold,
       // ),
     ),
-    colorScheme: ColorScheme.light(),
+    colorScheme: const ColorScheme.light(),
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.teal,
     ),

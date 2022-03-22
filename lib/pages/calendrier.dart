@@ -11,6 +11,8 @@ class Calendrier extends StatefulWidget {
 }
 
 class _Calendrier extends State<Calendrier> {
+  String calendrierType = "Semaine";
+  bool planning = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,22 +34,113 @@ class _Calendrier extends State<Calendrier> {
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
-            Text("Prog. de la semaine")
+            Text("Planning")
           ],
         ),
+        actions: [
+          PopupMenuButton(
+            onSelected: (e) {
+              setState(() {
+                if (e == 0) {
+                  planning = true;
+                } else {
+                  planning = false;
+                }
+              });
+            },
+            icon: Icon(Icons.more_vert),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Plan de la semaine",
+                      //style: Theme.of(context).textTheme.bodyText1,
+                    )
+                  ],
+                ),
+                value: 0,
+              ),
+              PopupMenuItem(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Plan du mois",
+                      //style: Theme.of(context).textTheme.bodyText1,
+                    )
+                  ],
+                ),
+                value: 1,
+              ),
+            ],
+          ),
+          /*  
+          SizedBox(
+            height: 50,
+            width: 50,
+            child: Padding(
+              padding: EdgeInsets.only(right: 10),
+              child: DropdownButton<String>(
+                icon: Icon(Icons.calendar_month),
+                isExpanded: true,
+                items: const [
+                  DropdownMenuItem<String>(
+                    child: Text("Vue de la semaine"),
+                    value: "semaine",
+                  ),
+                  DropdownMenuItem<String>(
+                    child: Text("Vue de la semaine"),
+                    value: "semaine",
+                  ),
+                ],
+                onChanged: (c) {
+                  //
+                },
+              ),
+            ),
+          )
+          */
+        ],
       ),
-      body: SfCalendar(
-        view: CalendarView.week,
+      body: planning
+          ? SfCalendar(
+              view: CalendarView.week,
+              onTap: (c) {
+                //
+                print(c.date);
+                //
+                print(c.appointments!.first);
+                //
+                print(c.targetElement);
+                //
+                print(c.resource);
+              },
+              dataSource: MeetingDataSource(
+                getAppointment(),
+              ),
+            )
+          : SfCalendar(
+              view: CalendarView.month,
+              onTap: (c) {
+                //
+                print(c.date);
+                //
+                print(c.appointments!.first);
+                //
+                print(c.targetElement);
+                //
+                print(c.resource);
+              },
+              /*
         dataSource: MeetingDataSource(
           getAppointment(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //
-        },
-        child: Icon(Icons.calendar_today),
-      ),
+        */
+            ),
     );
   }
 }

@@ -1,9 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lua/models/user_model.dart';
 import 'package:lua/pages/dashboard.dart';
 import 'package:lua/pages/menudroit.dart';
 import 'package:lua/pages/menugauche.dart';
+import 'package:lua/utile/check.dart';
 import 'package:lua/utile/widget.dart';
+import 'package:sqflite/sqflite.dart';
 
 import 'cours/cours.dart';
 import 'partage/partage.dart';
@@ -20,6 +25,24 @@ class _Accueil extends State<Accueil> {
   GlobalKey<ScaffoldState> cles = GlobalKey();
   //
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+  //
+  String textAttente =
+      "Patientez pendant le chargement des vos données personnel";
+  bool boolAttente = true;
+
+  Future<void> getUserInfo() async {
+    //
+    Check check = Check();
+    //
+    int r = await check.getUserInfos();
+  }
+
+  Future<void> checkYourProfil() async {
+    UserModel userModel = UserModel();
+    Database db = await userModel.openDB();
+    //
+    List l = await db.query("user");
+  }
 
   @override
   void initState() {
@@ -91,7 +114,23 @@ class _Accueil extends State<Accueil> {
             child: MenuGauche(),
           ),
         ),
-        body: Dash(),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Dash(),
+            Container(
+              height: 50,
+              width: 50,
+              child: Image.asset(
+                "assets/LOGO PNG.png",
+                fit: BoxFit.contain,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,11 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lua/models/etudiant.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:lua/pages/bibliotheque.dart';
-import 'package:lua/pages/calendrier.dart';
+import 'package:lua/pages/exes/examens.dart';
+import 'package:lua/pages/exes/interro.dart';
+import 'package:lua/pages/exes/tp.dart';
+import 'package:lua/pages/planning.dart';
 import 'package:lua/pages/cours.dart';
 import 'package:lua/pages/etudiants.dart';
 import 'package:lua/pages/evenement.dart';
+import 'package:lua/pages/profile/infospersonnel.dart';
 import 'package:lua/pages/staff.dart';
+import 'package:lua/pages/univs/nous.dart';
+import 'package:lua/utile/check.dart';
 
 import 'departement.dart';
 import 'planningmois.dart';
@@ -69,12 +76,22 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
               padding: EdgeInsets.all(10),
               children: [
                 ListTile(
-                  leading: Icon(
-                    Icons.dashboard_customize_outlined,
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    Check check = Check();
+                    //
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => InfoPersonnel(),
+                      ),
+                    );
+                  },
+                  leading: const Icon(
+                    CupertinoIcons.person,
                     color: Colors.white,
                   ),
-                  title: Text(
-                    "Dashboard",
+                  title: const Text(
+                    "Information personnels",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.normal,
@@ -101,6 +118,7 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
+                /*
                 ListTile(
                   onTap: () {
                     Navigator.of(context).push(
@@ -121,6 +139,7 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
+                */
                 ListTile(
                   onTap: () {
                     Navigator.of(context).push(
@@ -204,6 +223,7 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
+                /*
                 ListTile(
                   onTap: () {
                     Navigator.of(context).push(
@@ -224,7 +244,8 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
-                SizedBox(
+                */
+                const SizedBox(
                   height: 20,
                 ),
                 Padding(
@@ -247,11 +268,11 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                       ),
                     );
                   },
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.calendar_today,
                     color: Colors.white,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Planning de la semaine",
                     style: TextStyle(
                       color: Colors.white,
@@ -264,16 +285,79 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                     //
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => PlanningMois(),
+                        builder: (context) => TravauxPratique(),
                       ),
                     );
                   },
                   leading: Icon(
-                    Icons.calendar_today,
+                    Icons.edit_note_outlined,
                     color: Colors.white,
                   ),
                   title: Text(
-                    "Planning du mois",
+                    "T.P",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    //
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Interrogation(),
+                      ),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.chat_bubble_outline,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Interrogation",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    //
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Examens(),
+                      ),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.edit,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Examens",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    //
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Nous(),
+                      ),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.contact_support,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Nous contacter",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.normal,
@@ -281,45 +365,6 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                   ),
                 ),
                 /*
-                ListTile(
-                  leading: Icon(
-                    Icons.chat_bubble_outline,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "Chat",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.contact_page,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "Contact",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.folder,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    "Fichier",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ),
                 ListTile(
                   leading: Icon(
                     Icons.map_outlined,
@@ -352,6 +397,29 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
                   ),
                 ),
                 ListTile(
+                  onTap: () async {
+                    FlutterLocalNotificationsPlugin flip =
+                        FlutterLocalNotificationsPlugin();
+                    // app_icon needs to be a added as a drawable
+                    // resource to the Android head project.
+                    var android = AndroidInitializationSettings('logo');
+                    var IOS = IOSInitializationSettings();
+
+                    // initialise settings for both Android and iOS device.
+                    var settings =
+                        InitializationSettings(android: android, iOS: IOS);
+                    flip.initialize(settings, onSelectNotification: (n) {
+                      print("Je suis cliqué!");
+                      //
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (contextGeneral) => Calendrier(),
+                        ),
+                      );
+                    });
+                    _showNotificationWithDefaultSound(flip);
+                    //
+                  },
                   leading: Icon(
                     Icons.notifications,
                     color: Colors.white,
@@ -383,5 +451,29 @@ class _MenuGauche extends State<MenuGauche> with TickerProviderStateMixin {
         ),
       ),
     );
+  }
+
+  _showNotificationWithDefaultSound(flip) async {
+    // Show a notification after every 15 minute with the first
+    // appearance happening a minute after invoking the method
+    var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
+        'lau', 'Leadership Academia University',
+        channelDescription:
+            'Leadership Academia University vous dit salut et bienvenu',
+        importance: Importance.high,
+        priority: Priority.high);
+    var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+
+    // initialise channel platform for both Android and iOS device.
+    var platformChannelSpecifics = NotificationDetails(
+      android: androidPlatformChannelSpecifics,
+      iOS: iOSPlatformChannelSpecifics,
+    );
+    await flip.show(
+        0,
+        'Leadership Academia University',
+        'Leadership Academia University vous dit salut!',
+        platformChannelSpecifics,
+        payload: 'Default_Sound');
   }
 }

@@ -1,20 +1,19 @@
 import 'dart:async';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'pages/accueil.dart';
 import 'utile/connexion_users.dart';
 
-class Login extends StatefulWidget {
+
+class Redirection extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _Login();
+    return _Redirection();
   }
 }
 
-class _Login extends State<Login> {
+class _Redirection extends State<Redirection> {
   bool obs = true;
   TextEditingController emailControlleur = TextEditingController();
   TextEditingController mdpControlleur = TextEditingController();

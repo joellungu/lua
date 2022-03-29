@@ -86,12 +86,12 @@ Enfin, la jeunesse d’aujourd’hui a besoin d’emboîter les pas des autres j
                   height: 200,
                   width: 200,
                   child: Image.asset(
-                    "assets/LOGO PNG.png",
-                    fit: BoxFit.cover,
+                    "assets/logo1.jpeg",
+                    fit: BoxFit.contain,
                   ),
                 ),
                 const Text(
-                  """Laboris mollit aute culpa proident eiusmod aliqua culpa aute non Lorem. Cupidatat excepteur ullamco adipisicing consequat ex occaecat id pariatur deserunt dolore ad reprehenderit officia. Magna adipisicing proident voluptate dolore aliqua anim ipsum sunt qui. Dolore commodo enim duis consequat ad esse anim sint ullamco laborum ipsum.""",
+                  """""",
                   textAlign: TextAlign.center,
                 ),
                 Container(
@@ -123,7 +123,7 @@ Enfin, la jeunesse d’aujourd’hui a besoin d’emboîter les pas des autres j
                             ),
                           );
                         },
-                        child: const Text("Ce preinscrire"),
+                        child: const Text("Se préinscrire"),
                       )
                     ],
                   ),

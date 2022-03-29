@@ -19,7 +19,7 @@ class _PreInscription extends State<PreInscription> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Pre-inscription",
+          "Preinscription",
           style: TextStyle(
             color: Colors.white,
             fontSize: 15,

@@ -49,6 +49,7 @@ class ThemeClass {
       //   fontWeight: FontWeight.bold,
       // ),
     ),
+    primaryColor: Colors.teal,
     colorScheme: const ColorScheme.light(),
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.teal,

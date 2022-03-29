@@ -1,7 +1,6 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:lua/utile/widget.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class Lecture extends StatefulWidget {
   bool? fini;
@@ -18,7 +17,6 @@ class Lecture extends StatefulWidget {
 
 class _Lecture extends State<Lecture> {
   //
-  PdfViewerController? controllerPdf;
 
   GlobalKey cles = GlobalKey<ScaffoldState>();
   TextEditingController motcles = TextEditingController();
@@ -28,7 +26,6 @@ class _Lecture extends State<Lecture> {
     //
     super.initState();
     //
-    controllerPdf = PdfViewerController();
     //
   }
 
@@ -174,12 +171,6 @@ class _Lecture extends State<Lecture> {
             endDrawer: Drawer(
               elevation: 0,
               child: ListView(),
-            ),
-            body: Container(
-              child: SfPdfViewer.asset(
-                'assets/en_GC.pdf',
-                controller: controllerPdf,
-              ),
             ),
           )
         : Scaffold(

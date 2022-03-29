@@ -1,3 +1,7 @@
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:horizontal_data_table/horizontal_data_table.dart';
@@ -19,7 +23,9 @@ class _Cours extends State<Cours> {
 
   @override
   void initState() {
-    user.initData(100);
+    user.initData(40);
+    showTruc(); //
+    //
     super.initState();
   }
 
@@ -47,6 +53,186 @@ class _Cours extends State<Cours> {
             Text("Cours")
           ],
         ),
+        actions: [
+          PopupMenuButton(
+            onSelected: (e) {
+              setState(() {
+                //
+              });
+            },
+            icon: Icon(Icons.more_vert),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 24,
+                      width: 24,
+                      decoration: BoxDecoration(
+                        color: Colors.teal,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Religieux",
+                      //style: Theme.of(context).textTheme.bodyText1,
+                    )
+                  ],
+                ),
+                value: 0,
+              ),
+              PopupMenuItem(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 24,
+                      width: 24,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Gestion",
+                      //style: Theme.of(context).textTheme.bodyText1,
+                    )
+                  ],
+                ),
+                value: 1,
+              ),
+              PopupMenuItem(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                        color: Colors.brown,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Littérature",
+                      //style: Theme.of(context).textTheme.bodyText1,
+                    )
+                  ],
+                ),
+                value: 2,
+              ),
+              PopupMenuItem(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Science humaine",
+                      //style: Theme.of(context).textTheme.bodyText1,
+                    )
+                  ],
+                ),
+                value: 3,
+              ),
+              PopupMenuItem(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Management",
+                      //style: Theme.of(context).textTheme.bodyText1,
+                    )
+                  ],
+                ),
+                value: 2,
+              ),
+              PopupMenuItem(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Science sociale",
+                      //style: Theme.of(context).textTheme.bodyText1,
+                    )
+                  ],
+                ),
+                value: 3,
+              ),
+              PopupMenuItem(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                        color: Colors.lime,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Math",
+                      //style: Theme.of(context).textTheme.bodyText1,
+                    )
+                  ],
+                ),
+                value: 3,
+              ),
+            ],
+          ),
+        ],
       ),
       body: _getBodyWidget(),
     );
@@ -56,7 +242,7 @@ class _Cours extends State<Cours> {
     return Container(
       child: HorizontalDataTable(
         leftHandSideColumnWidth: 50,
-        rightHandSideColumnWidth: 1050,
+        rightHandSideColumnWidth: 1400,
         isFixedHeader: true,
         headerWidgets: _getTitleWidget(),
         leftSideItemBuilder: _generateFirstColumnRow,
@@ -104,12 +290,14 @@ class _Cours extends State<Cours> {
 
   List<Widget> _getTitleWidget() {
     return [
-      _getTitleItemWidget('#', 50),
-      _getTitleItemWidget('NOM', 200),
-      _getTitleItemWidget('TUTILAIRE', 200),
-      _getTitleItemWidget("NOMBRE D'HEURE", 200),
-      _getTitleItemWidget('DEBUT', 200),
-      _getTitleItemWidget('FIN', 200),
+      _getTitleItemWidget('', 50),
+      _getTitleItemWidget('COURS', 200),
+      _getTitleItemWidget('ENSEIGNANT', 200),
+      _getTitleItemWidget('VACATION', 200),
+      _getTitleItemWidget('FACULTE', 200),
+      _getTitleItemWidget('HEURES EXIGEES', 200),
+      _getTitleItemWidget('HEURES PRESTEES', 100),
+      //_getTitleItemWidget('', 0),
     ];
   }
 
@@ -128,13 +316,19 @@ class _Cours extends State<Cours> {
       height: 52,
       //width: 50,
       alignment: Alignment.center,
-      child: Icon(
-        Icons.school,
-        color: Colors.white,
+      child: Container(
+        height: 40,
+        width: 40,
+        alignment: Alignment.center,
+        margin: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: user.userInfo[index].couleur,
+          borderRadius: BorderRadius.circular(20),
+        ),
       ),
       //margin: const EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        color: Colors.black45,
+      decoration: const BoxDecoration(
+        color: Colors.transparent,
         //borderRadius: BorderRadius.circular(27),
       ),
     );
@@ -144,53 +338,51 @@ class _Cours extends State<Cours> {
     return Row(
       children: <Widget>[
         Container(
-          child: Text(user.userInfo[index].registerDate),
-          width: 200,
-          height: 52,
-          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-        ),
-        Container(
-          child: Text(user.userInfo[index].terminationDate),
-          width: 200,
-          height: 52,
-          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-        ),
-        Container(
-          child: Text(user.userInfo[index].registerDate),
-          width: 200,
-          height: 52,
-          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-        ),
-        Container(
-          child: Text(user.userInfo[index].terminationDate),
-          width: 200,
-          height: 52,
-          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-        ),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 140,
-                alignment: Alignment.center,
-                child: Text(
-                  index % 2 == 1 ? "Temps plain" : "Temps partiel",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                decoration: BoxDecoration(
-                  color: index % 2 == 1 ? Colors.green : Colors.yellow.shade700,
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
-              ),
-            ],
+          child: Text(
+            user.userInfo[index].cours,
           ),
+          width: 200,
+          height: 52,
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          alignment: Alignment.centerLeft,
+        ),
+        Container(
+          child: Text(user.userInfo[index].enseignant),
+          width: 200,
+          height: 52,
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          alignment: Alignment.centerLeft,
+        ),
+        Container(
+          child: Text(user.userInfo[index].vacation),
+          width: 200,
+          height: 52,
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          alignment: Alignment.centerLeft,
+        ),
+        Container(
+          child: Text(user.userInfo[index].faculte),
+          width: 200,
+          height: 52,
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          alignment: Alignment.centerLeft,
+        ),
+        Container(
+          child: Text(user.userInfo[index].heurese),
+          width: 200,
+          height: 52,
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          alignment: Alignment.centerLeft,
+        ),
+        Container(
+          child: Text(user.userInfo[index].heuresp),
+          width: 200,
+          height: 52,
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          alignment: Alignment.centerLeft,
+        ),
+        Container(
+          //child: Text(user.userInfo[index].terminationDate),
           width: 200,
           height: 52,
           padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
@@ -198,6 +390,34 @@ class _Cours extends State<Cours> {
         ),
       ],
     );
+  }
+  //
+
+  showTruc() async {
+    //var file = "assets/Copie de LISTES DE COURS.xlsx";
+    //var bytes = File(file).readAsBytesSync();
+    final byteData =
+        await rootBundle.load('assets/Copie de LISTES DE COURS.xlsx');
+    //
+    //var byt = await rootBundle.load(file);
+    //
+    var excel = Excel.decodeBytes(byteData.buffer
+        .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+
+    /*
+    for (var table in excel.tables.keys) {
+      print("table: $table"); //sheet Name
+      print(excel.tables[table]!.maxCols);
+      print(excel.tables[table]!.maxRows);
+      for (var row in excel.tables[table]!.rows) {
+        //print("$row");
+        row.forEach((element) {
+          //
+          //print("::${element}");
+        });
+      }
+    }
+    */
   }
 }
 
@@ -207,25 +427,27 @@ class User {
   List<UserInfo> userInfo = [];
 
   void initData(int size) {
-    for (int i = 0; i < size; i++) {
-      userInfo.add(UserInfo(
-          "User_$i", i % 3 == 0, '+001 9999 9999', '2019-01-01', 'N/A'));
-    }
+    lis.forEach((element) {
+      userInfo.add(element);
+    });
   }
 
   ///
   /// Single sort, sort Name's id
   void sortName(bool isAscending) {
+    /*
     userInfo.sort((a, b) {
       int aId = int.tryParse(a.name.replaceFirst('User_', '')) ?? 0;
       int bId = int.tryParse(b.name.replaceFirst('User_', '')) ?? 0;
       return (aId - bId) * (isAscending ? 1 : -1);
     });
+    */
   }
 
   ///
   /// sort with Status and Name as the 2nd Sort
   void sortStatus(bool isAscending) {
+    /*
     userInfo.sort((a, b) {
       if (a.status == b.status) {
         int aId = int.tryParse(a.name.replaceFirst('User_', '')) ?? 0;
@@ -236,17 +458,59 @@ class User {
       } else {
         return isAscending ? -1 : 1;
       }
+      
     });
+    */
   }
 }
 
 class UserInfo {
-  String name;
-  bool status;
-  String phone;
-  String registerDate;
-  String terminationDate;
+  String cours; //cours
+  String enseignant; //enseignant
+  String vacation; //vacation
+  String faculte; //faculte
+  String heurese; //heurese
+  String heuresp; //heuresp
+  Color couleur;
 
-  UserInfo(this.name, this.status, this.phone, this.registerDate,
-      this.terminationDate);
+  UserInfo(this.cours, this.enseignant, this.vacation, this.faculte,
+      this.heurese, this.heuresp, this.couleur);
 }
+
+List<UserInfo> lis = [
+  UserInfo("ANGLAIS", "Prof SANGABAO", "Jour/AM", "BA, LG, CTI", "30H", "",
+      Colors.brown),
+  UserInfo("ANGLAIS", "Prof GIASUMA", "Jour/PM, Soir", "BA, LG, CTI & TH.B",
+      "30H	", "", Colors.brown),
+  UserInfo("METHODES POUR LA RECHERCHE SCIENTIFIQUE", "Prof N’KWIM",
+      "Jour (AM et PM), Soir", "BA, LG, CTI & TH.B", "30H", "", Colors.brown),
+  UserInfo("MATHEMATIQUE GENERALE", "CT MUBOYAI", "Jour (AM et PM), Soir",
+      "BA, LG", "30H", "", Colors.lime),
+  UserInfo("LOGIQUE, EXPRESSION ECRITE ET ORALE", "Prof MUKENDJI",
+      "Jour (AM et PM), Soir", "BA, LG", "30H", "", Colors.lime),
+  UserInfo("CONCEPTION ET ADMINISTRATION DE PROJET", "Prof PASHI",
+      "Jour (AM et PM), Soir", "BA, LG", "30H", "", Colors.green),
+  UserInfo("STRATEGIC MANAGEMENT", "Prof KAWATA", "Jour (AM et PM), Soir",
+      "BA, LG, CTI", "30H", "", Colors.green),
+  UserInfo("ETHIQUE SOCIALE", "Prof N’KWIM", "Jour (AM et PM), Soir",
+      "BA, LG, TH.B", "30H", "", Colors.blue),
+  UserInfo("COMPTABILITE GENERALE", "CT BAOLIMO", "Jour (AM et PM), Soir",
+      "BA, LG", "45H", "", Colors.lime),
+  UserInfo("ANALYSE DES ETATS FINANCIERS", "CT YADISADILA",
+      "Jour (AM et PM), Soir", "BA, LG", "30H", "", Colors.red),
+  UserInfo("DEVELOPPEMENT PERSONNEL DU LEADER", "Prof FOHLE",
+      "Jour (AM et PM), Soir", "BA, LG, TH.B", "15H", "", Colors.red),
+  UserInfo("LES STYLES ET CARACTERISTIQUES DU LEADERSHIP", "Prof EALE",
+      "Jour (AM et PM), Soir", "BA, LG, CTI & TH.B", "15H", "", Colors.green),
+  UserInfo("DOCUMENTS COMMERCIAUX ET MATHEMATIQUE FINANCIERES", "CT YADISADILA",
+      "Jour (AM et PM), Soir", "BA", "45H", "", Colors.lime),
+  UserInfo("POPULATION, ENVIRONNEMENT & DEVELOPPEMENT", "Prof MUZINGU",
+      "Jour (AM et PM), Soir", "BA, LG", "30H", "", Colors.amber),
+  UserInfo("HISTOIRE POLITIQUE DU CONGO", "Prof N’LANDU ESTHER",
+      "Jour (AM et PM), Soir", "BA, LG", "30H", "", Colors.amber),
+  UserInfo("FONDEMENTS DE BONNE GOUVERNANCE", "Prof PASHI",
+      "Jour (AM et PM), Soir", "LG", "30H", "", Colors.amber),
+];
+
+/*
+*/

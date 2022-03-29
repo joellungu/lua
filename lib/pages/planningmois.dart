@@ -32,7 +32,7 @@ class _PlanningMois extends State<PlanningMois> {
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
-            Text("Planning")
+            Text("Planning du mois")
           ],
         ),
       ),
@@ -42,7 +42,7 @@ class _PlanningMois extends State<PlanningMois> {
           //
           print(c.date);
           //
-          print(c.appointments!.first);
+          print(c.appointments);
           //
           print(c.targetElement);
           //

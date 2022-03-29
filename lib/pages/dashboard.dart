@@ -24,10 +24,6 @@ class _Dash extends State<Dash> {
       "icon": Icons.contacts_rounded,
     },
     {
-      "nom": "Staff",
-      "icon": Icons.person_pin_circle_outlined,
-    },
-    {
       "nom": "File Manager",
       "icon": Icons.folder,
     },
@@ -44,7 +40,7 @@ class _Dash extends State<Dash> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 1.2,
+      height: MediaQuery.of(context).size.height / 1.35,
       child: GridView.count(
         padding: EdgeInsets.all(20),
         shrinkWrap: true,
